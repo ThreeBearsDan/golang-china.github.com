@@ -1,8 +1,6 @@
 package main
 
 import (
-	"github.com/howeyc/fsnotify"
-
 	"flag"
 	"fmt"
 	"net/http"
@@ -10,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+
+	"github.com/golang-china/golang-china.github.com/tools/jkl/internal/fsnotify"
 )
 
 var (
@@ -28,20 +28,8 @@ var (
 	// re-generates the site when files are modified.
 	auto = flag.Bool("auto", false, "")
 
-	// deploys the website to S3
-	deploy = flag.Bool("s3", false, "")
-
 	// serves the website from the specified base url
 	baseurl = flag.String("base-url", "", "")
-
-	// s3 access key
-	s3key = flag.String("s3_key", "", "")
-
-	// s3 secret key
-	s3secret = flag.String("s3_secret", "", "")
-
-	// s3 bucket name
-	s3bucket = flag.String("s3_bucket", "", "")
 
 	// runs Jekyll with verbose output if True
 	verbose = flag.Bool("verbose", false, "")
@@ -94,30 +82,6 @@ func main() {
 	if err := site.Generate(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
-	}
-
-	// Deploys the static website to S3
-	if *deploy {
-
-		var conf *DeployConfig
-		// Read the S3 configuration details if not provided as
-		// command line
-		if *s3key == "" {
-			path := filepath.Join(site.Src, "_jekyll_s3.yml")
-			conf, err = ParseDeployConfig(path)
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
-			}
-		} else {
-			// else use the command line args
-			conf = &DeployConfig{*s3key, *s3secret, *s3bucket}
-		}
-
-		if err := site.Deploy(conf.Key, conf.Secret, conf.Bucket); err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
 	}
 
 	// If the auto option is enabled, use fsnotify to watch

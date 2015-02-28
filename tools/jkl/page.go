@@ -2,12 +2,13 @@ package main
 
 import (
 	"bytes"
-	"github.com/russross/blackfriday"
 	"io"
 	"io/ioutil"
-	"launchpad.net/goyaml"
 	"path/filepath"
 	"strings"
+
+	"github.com/golang-china/golang-china.github.com/tools/jkl/internal/markdown"
+	"github.com/golang-china/golang-china.github.com/tools/jkl/internal/yaml"
 )
 
 // A Page represents the key-value pairs in a page or posts front-end YAML as
@@ -35,10 +36,10 @@ func parsePage(fn string, c []byte) (Page, error) {
 
 	ext := filepath.Ext(fn)
 	ext_output := ext
-	markdown := isMarkdown(fn)
+	isMarkdown := isMarkdown(fn)
 
 	// if markdown, change the output extension to html
-	if markdown {
+	if isMarkdown {
 		ext_output = ".html"
 	}
 
@@ -49,8 +50,8 @@ func parsePage(fn string, c []byte) (Page, error) {
 
 	// if markdown, convert to html
 	raw := parseContent(c)
-	if markdown {
-		page["content"] = string(blackfriday.MarkdownCommon(raw))
+	if isMarkdown {
+		page["content"] = string(markdown.MarkdownCommon(raw))
 	} else {
 		page["content"] = string(raw)
 	}
@@ -72,7 +73,7 @@ func parsePage(fn string, c []byte) (Page, error) {
 // Helper function to parse the front-end yaml matter.
 func parseMatter(content []byte) (Page, error) {
 	page := map[string]interface{}{}
-	err := goyaml.Unmarshal(content, &page)
+	err := yaml.Unmarshal(content, &page)
 	return page, err
 }
 
