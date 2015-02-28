@@ -186,10 +186,6 @@ var usage = func() {
       --destination    changes the dir where Jekyll will write files to
       --server         starts a server that will host your _site directory
       --server-port    changes the port that the Jekyll server will run on
-      --s3             copies the _site directory to s3
-      --s3_key         aws access key use for s3 authentication
-      --s3_secret      aws secret key use for s3 authentication
-      --s3_bucket      name of the s3 bucket
   -v, --verbose        runs Jekyll with verbose output
   -h, --help           display this help and exit
 
