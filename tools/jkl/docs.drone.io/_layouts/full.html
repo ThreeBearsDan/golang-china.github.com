@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ .page.title }} &middot; drone.io</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<link rel="icon" type="image/png" href="img/favicon.png">
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="css/drone-base.css" rel="stylesheet" />
+		<link href="css/drone-docs.css" rel="stylesheet" />
+
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+		<!--[if lt IE 9]>
+		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- Primary Navigation
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="/">drone.io <small>Docs</small></a>
+					<ul class="nav pull-right">
+						<li><a href="http://blog.drone.io">Blog</a></li>
+						<li class="active"><a href="http://docs.drone.io">Documentation</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="container-inner">
+				<!-- Project Details
+				================================================== -->
+				<header>
+					<hgroup>
+						<h1>{{ .page.title }}</h1>
+					</hgroup>
+				</header>
+
+				<hr/>
+
+				<!-- Project Settings
+				================================================== -->
+				<div class="container-fluid container-docs container-legal">
+					<!-- Settings Options -->
+					<div>
+
+						<article>
+							{{ .content }}
+						</article>
+					</div>
+
+				</div><!-- end .container-fluid -->
+			</div><!-- end .inner -->
+		</div>
+
+		<!-- Footer
+		================================================== -->
+		<footer>
+			<p class="copyright">&copy; 2013 <strong>Drone.io</strong> All Rights Reserved.</p>
+		</footer>
+
+		<!-- Analytics
+		================================================== -->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-34247933-1']);
+			_gaq.push(['_setDomainName', 'drone.io']);
+				_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</body>
+</html>

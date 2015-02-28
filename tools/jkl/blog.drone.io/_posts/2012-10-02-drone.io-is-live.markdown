@@ -1,0 +1,17 @@
+---
+layout: posts
+title: "Drone.io is Live"
+author: Tom Burke
+authorlink: https://drone.io/tdburke
+---
+
+[Drone.io](https://drone.io) is now live and ready for business! It is a hosted continuous integration service.
+
+Try it out here: [https://drone.io](https://drone.io)
+
+It's *free* to start, no credit card required. Within minutes you can add your existing projects and have them automatically building & testing. Most programming languages and data services are supported, and new features are added constantly.
+
+Please [contact](http://docs.drone.io/contact.html) us with any questions or suggestions, we'd love to hear from you.
+
+Thanks,<br/>
+**Tom Burke and Brad Rydzewski**
