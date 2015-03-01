@@ -42,6 +42,10 @@ var (
 var mu sync.RWMutex
 
 func main() {
+	Main()
+}
+
+func Main() {
 
 	// Parse the input parameters
 	flag.BoolVar(help, "h", false, "")
