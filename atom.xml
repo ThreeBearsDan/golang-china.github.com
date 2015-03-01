@@ -1,0 +1,24 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+	<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Golang-China Blog</title>
+	<link href="http://golang-china.github.com/atom.xml" rel="self"/>
+	<link href="http://golang-china.github.com/"/>
+	<id>http://golang-china.github.com/</id>
+	<updated>{{ .site.time | date_to_xmlschema }}</updated>
+	<author>
+		<name>Golang-China</name>
+		<email>golang-china-dev@googlegroups.com</email>
+	</author>
+	{{ range .site.posts }}
+	<entry>
+		<title>{{ .title }}</title>
+		<link href="http://golang-china.github.com/{{ .url }}" />
+		<updated>{{ .date | date_to_xmlschema }}</updated>
+		<id>http://golang-china.github.com/{{ .url }}</id>
+		<content type="html">{{ .content | html }}</content>
+	</entry>
+	{{ end }}
+</feed>
